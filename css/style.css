@@ -1,10 +1,1369 @@
-/* style.css
-   This is a placeholder stylesheet for Part 1.
-   -Linking it now, even though it is empty, means the <link> tag in every
-    HTML page already resolves correctly instead of pointing to a missing file.
-   -Full styling (colours, layout, typography from the proposal's Design
-    section) gets built here in Part 2. */
+/* =====================================================================
+   Paws & Hearts Animal Rescue
+   Part 2 external stylesheet
 
-* {
+   This stylesheet provides:
+
+   - A consistent visual identity across all five pages
+   - CSS reset and default styles
+   - Typography and colour systems using CSS variables
+   - Flexbox and Grid layouts
+   - Desktop, tablet and mobile responsive breakpoints
+   - Responsive images
+   - Hover, focus and active pseudo-classes
+   - Accessible keyboard focus states
+   - Reduced-motion support
+   ===================================================================== */
+
+
+/* =====================================================================
+   1. EXTERNAL FONT IMPORTS
+   ===================================================================== */
+
+@import url(
+  'https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap'
+);
+
+
+/* =====================================================================
+   2. CSS RESET
+   ===================================================================== */
+
+/*
+  The universal selector applies a predictable box-sizing model
+  to every element. This makes width calculations easier because
+  padding and borders are included inside the declared width.
+*/
+
+*,
+*::before,
+*::after {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+/*
+  Improve scrolling and make anchor links move smoothly.
+*/
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+/*
+  Prevent horizontal scrolling caused by large elements or images.
+*/
+
+body {
+  overflow-x: hidden;
+}
+
+
+/*
+  Images automatically shrink inside their containers.
+  This ensures that images do not break the mobile layout.
+*/
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+
+/*
+  Form controls inherit the site's typography instead of using
+  inconsistent browser defaults.
+*/
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+
+/*
+  Remove default list bullets because navigation and custom lists
+  are styled separately below.
+*/
+
+ul,
+ol {
+  list-style: none;
+}
+
+
+/* =====================================================================
+   3. DESIGN TOKENS
+   ===================================================================== */
+
+:root {
+
+  /*
+    Dog-inspired colour palette:
+
+    Charcoal: readable main text
+    Cream: warm page background
+    Golden tan: primary call-to-action colour
+    Terracotta: secondary warm accent
+    Sage: calm animal-care accent
+    Brown: supporting dog-colour tone
+  */
+
+  --color-ink: #25221f;
+  --color-ink-soft: #625b54;
+  --color-cream: #f8f4ec;
+  --color-cream-dark: #eee5d6;
+  --color-white: #ffffff;
+
+  --color-brown: #60483b;
+  --color-brown-dark: #3d2d27;
+
+  --color-gold: #d99a3d;
+  --color-gold-light: #f3d49d;
+  --color-gold-dark: #a76e1d;
+
+  --color-terracotta: #b9654d;
+  --color-terracotta-dark: #874535;
+
+  --color-sage: #657c68;
+  --color-sage-light: #dce5da;
+  --color-sage-dark: #405846;
+
+  --color-border: #ded4c5;
+  --color-focus: #286c73;
+
+  /*
+    Typography variables.
+  */
+
+  --font-heading: "Fraunces", Georgia, serif;
+  --font-body: "DM Sans", Arial, sans-serif;
+
+  --font-size-small: 0.875rem;
+  --font-size-body: 1rem;
+  --font-size-large: 1.2rem;
+  --font-size-h3: 1.45rem;
+  --font-size-h2: clamp(2rem, 4vw, 3.25rem);
+  --font-size-h1: clamp(2.8rem, 7vw, 5.8rem);
+
+  /*
+    Spacing scale.
+  */
+
+  --space-1: 0.5rem;
+  --space-2: 0.875rem;
+  --space-3: 1.25rem;
+  --space-4: 2rem;
+  --space-5: 3rem;
+  --space-6: 5rem;
+  --space-7: 7rem;
+
+  /*
+    Layout variables.
+  */
+
+  --content-width: 72rem;
+  --text-width: 68ch;
+  --border-radius-small: 0.35rem;
+  --border-radius-medium: 1rem;
+  --border-radius-large: 2rem;
+
+  /*
+    Shadow variables.
+  */
+
+  --shadow-soft: 0 0.7rem 2rem rgba(61, 45, 39, 0.1);
+  --shadow-card: 0 1rem 2.5rem rgba(61, 45, 39, 0.13);
+  --shadow-hover: 0 1.25rem 2.8rem rgba(61, 45, 39, 0.2);
+}
+
+
+/* =====================================================================
+   4. BASE STYLES
+   ===================================================================== */
+
+body {
+  background-color: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: var(--font-size-body);
+  line-height: 1.65;
+}
+
+
+/*
+  Default paragraph styling keeps text readable on large displays.
+*/
+
+p {
+  max-width: var(--text-width);
+  margin-bottom: var(--space-3);
+  color: var(--color-ink-soft);
+}
+
+
+/*
+  Headings use a serif display font to create a warm, personal
+  animal-rescue identity rather than a generic technology style.
+*/
+
+h1,
+h2,
+h3 {
+  color: var(--color-brown-dark);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+}
+
+
+h1 {
+  font-size: var(--font-size-h1);
+  max-width: 12ch;
+}
+
+
+h2 {
+  font-size: var(--font-size-h2);
+  margin-bottom: var(--space-3);
+}
+
+
+h3 {
+  font-size: var(--font-size-h3);
+  margin-bottom: var(--space-1);
+}
+
+
+strong {
+  color: var(--color-brown-dark);
+}
+
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 4px;
+}
+
+
+/*
+  Eyebrows are small uppercase labels used to structure sections.
+*/
+
+.eyebrow {
+  color: var(--color-terracotta-dark);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  margin-bottom: var(--space-2);
+  text-transform: uppercase;
+}
+
+
+/* =====================================================================
+   5. SITE HEADER AND NAVIGATION
+   ===================================================================== */
+
+.site-header {
+  align-items: center;
+  background-color: var(--color-brown-dark);
+  color: var(--color-cream);
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-4);
+  min-height: 5rem;
+  padding: var(--space-3) max(5vw, var(--space-4));
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+
+/*
+  The logo is also a working link to index.html.
+*/
+
+.logo {
+  align-items: center;
+  color: var(--color-cream);
+  display: inline-flex;
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 700;
+  gap: var(--space-1);
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+
+.logo-paw {
+  color: var(--color-gold-light);
+  font-family: Arial, sans-serif;
+  font-size: 1.6rem;
+}
+
+
+.logo:hover,
+.logo:focus {
+  color: var(--color-gold-light);
+  transform: translateY(-2px);
+}
+
+
+/*
+  Desktop navigation uses a horizontal flex layout.
+*/
+
+.site-navigation ul {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+
+.site-navigation a {
+  border-bottom: 2px solid transparent;
+  color: var(--color-cream);
+  font-size: var(--font-size-small);
+  font-weight: 600;
+  padding-bottom: 0.35rem;
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+
+.site-navigation a:hover,
+.site-navigation a:focus,
+.site-navigation a[aria-current="page"] {
+  border-bottom-color: var(--color-gold-light);
+  color: var(--color-gold-light);
+}
+
+
+/* =====================================================================
+   6. MAIN CONTENT LAYOUT
+   ===================================================================== */
+
+main {
+  margin: 0 auto;
+  max-width: var(--content-width);
+  padding: 0 max(5vw, var(--space-4));
+}
+
+
+.content-section {
+  padding: var(--space-7) 0;
+}
+
+
+.page-introduction {
+  padding: var(--space-7) 0 var(--space-6);
+}
+
+
+.page-introduction > p:last-child {
+  font-size: var(--font-size-large);
+  max-width: 60ch;
+}
+
+
+/* =====================================================================
+   7. BUTTONS AND LINKS
+   ===================================================================== */
+
+.button {
+  align-items: center;
+  border: 2px solid transparent;
+  border-radius: var(--border-radius-small);
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 0.95rem;
+  font-weight: 700;
+  justify-content: center;
+  min-height: 3.1rem;
+  padding: 0.75rem 1.35rem;
+  text-align: center;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+.button:hover {
+  transform: translateY(-3px);
+}
+
+
+.button:active {
+  transform: translateY(0);
+}
+
+
+.button-primary {
+  background-color: var(--color-gold);
+  border-color: var(--color-gold);
+  color: var(--color-brown-dark);
+}
+
+
+.button-primary:hover,
+.button-primary:focus {
+  background-color: var(--color-gold-light);
+  border-color: var(--color-gold-light);
+  box-shadow: var(--shadow-soft);
+}
+
+
+.button-secondary {
+  background-color: transparent;
+  border-color: var(--color-cream);
+  color: var(--color-cream);
+}
+
+
+.button-secondary:hover,
+.button-secondary:focus {
+  background-color: var(--color-cream);
+  color: var(--color-brown-dark);
+}
+
+
+.button-outline {
+  background-color: transparent;
+  border-color: var(--color-brown);
+  color: var(--color-brown);
+}
+
+
+.button-outline:hover,
+.button-outline:focus {
+  background-color: var(--color-brown);
+  color: var(--color-cream);
+}
+
+
+.button-small {
+  font-size: 0.85rem;
+  min-height: 2.7rem;
+  padding: 0.6rem 0.9rem;
+}
+
+
+.text-link {
+  color: var(--color-terracotta-dark);
+  display: inline-block;
+  font-weight: 700;
+  margin-top: var(--space-1);
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+
+.text-link:hover,
+.text-link:focus {
+  color: var(--color-gold-dark);
+  transform: translateX(4px);
+}
+
+
+/* =====================================================================
+   8. HOME PAGE HERO
+   ===================================================================== */
+
+.hero-section {
+  align-items: center;
+  background-color: var(--color-brown-dark);
+  border-radius: 0 0 var(--border-radius-large) var(--border-radius-large);
+  color: var(--color-cream);
+  display: grid;
+  gap: var(--space-6);
+  grid-template-columns: minmax(0, 1fr) minmax(20rem, 0.9fr);
+  margin-inline: calc(max(5vw, var(--space-4)) * -1);
+  overflow: hidden;
+  padding: clamp(3rem, 8vw, 7rem) max(5vw, var(--space-4));
+}
+
+
+.hero-content h1 {
+  color: var(--color-cream);
+}
+
+
+.hero-introduction {
+  color: var(--color-cream-dark);
+  font-size: var(--font-size-large);
+  max-width: 52ch;
+}
+
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+}
+
+
+.hero-image-wrapper {
+  position: relative;
+}
+
+
+.hero-image-wrapper::after {
+  border: 2px solid var(--color-gold);
+  border-radius: var(--border-radius-large);
+  content: "";
+  inset: 1rem -1rem -1rem 1rem;
+  pointer-events: none;
+  position: absolute;
+}
+
+
+.hero-image {
+  border-radius: var(--border-radius-large);
+  min-height: 25rem;
+  object-fit: cover;
+  position: relative;
+  width: 100%;
+  z-index: 1;
+}
+
+
+/* =====================================================================
+   9. SECTION HEADINGS
+   ===================================================================== */
+
+.section-heading {
+  margin-bottom: var(--space-5);
+  max-width: 48rem;
+}
+
+
+.section-heading p:last-child {
+  font-size: var(--font-size-large);
+}
+
+
+/* =====================================================================
+   10. ANIMAL CARDS
+   ===================================================================== */
+
+.animal-grid {
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+
+.animal-grid-home {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-width: 58rem;
+}
+
+
+.animal-card {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-medium);
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+  transition:
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
+}
+
+
+.animal-card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-0.5rem);
+}
+
+
+.animal-image-wrapper {
+  min-height: 15rem;
+  overflow: hidden;
+  position: relative;
+}
+
+
+.animal-image {
+  height: 100%;
+  min-height: 15rem;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+  width: 100%;
+}
+
+
+.animal-card:hover .animal-image {
+  transform: scale(1.05);
+}
+
+
+.animal-status {
+  background-color: var(--color-sage-dark);
+  border-radius: 999px;
+  color: var(--color-white);
+  font-size: 0.75rem;
+  font-weight: 700;
+  left: var(--space-2);
+  padding: 0.4rem 0.7rem;
+  position: absolute;
+  top: var(--space-2);
+}
+
+
+.animal-card-content {
+  padding: var(--space-4);
+}
+
+
+.animal-card h2,
+.animal-card h3 {
+  font-size: 1.8rem;
+  margin-bottom: var(--space-1);
+}
+
+
+.animal-type {
+  color: var(--color-terracotta-dark);
+  font-size: var(--font-size-small);
+  font-weight: 700;
+  margin-bottom: var(--space-1);
+}
+
+
+.section-button {
+  margin-top: var(--space-5);
+}
+
+
+/* =====================================================================
+   11. SPLIT SECTION AND FACT PANEL
+   ===================================================================== */
+
+.split-section {
+  align-items: stretch;
+  display: grid;
+  gap: var(--space-6);
+  grid-template-columns: 1fr 1fr;
+  padding: var(--space-7) 0;
+}
+
+
+.split-section-content {
+  align-self: center;
+}
+
+
+.split-section-content p {
+  font-size: var(--font-size-large);
+}
+
+
+.fact-panel {
+  background-color: var(--color-sage-light);
+  border-radius: var(--border-radius-medium);
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-5);
+}
+
+
+.fact-item {
+  border-bottom: 1px solid rgba(64, 88, 70, 0.25);
+  display: flex;
+  flex-direction: column;
+  padding-bottom: var(--space-3);
+}
+
+
+.fact-item:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+
+.fact-item strong {
+  color: var(--color-sage-dark);
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+}
+
+
+.fact-item span {
+  color: var(--color-sage-dark);
+  font-weight: 600;
+}
+
+
+/* =====================================================================
+   12. CALLOUT SECTIONS
+   ===================================================================== */
+
+.callout-section {
+  background-color: var(--color-terracotta);
+  border-radius: var(--border-radius-large);
+  color: var(--color-white);
+  margin: var(--space-6) 0;
+  padding: clamp(2.5rem, 6vw, 5rem);
+  text-align: center;
+}
+
+
+.callout-section h2 {
+  color: var(--color-white);
+}
+
+
+.callout-section p {
+  color: var(--color-white);
+  margin-inline: auto;
+}
+
+
+.callout-section .eyebrow {
+  color: var(--color-gold-light);
+}
+
+
+.callout-section .button {
+  margin-top: var(--space-2);
+}
+
+
+.adoption-callout {
+  margin-bottom: var(--space-7);
+}
+
+
+/* =====================================================================
+   13. ABOUT PAGE
+   ===================================================================== */
+
+.story-section {
+  align-items: center;
+  display: grid;
+  gap: var(--space-6);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  padding-bottom: var(--space-7);
+}
+
+
+.story-section-image img {
+  border-radius: var(--border-radius-large);
+  height: 28rem;
+  object-fit: cover;
+  width: 100%;
+}
+
+
+.story-section-content p {
+  font-size: var(--font-size-large);
+}
+
+
+.mission-section {
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  padding: var(--space-6) 0;
+}
+
+
+.mission-card {
+  background-color: var(--color-cream-dark);
+  border-left: 0.45rem solid var(--color-sage);
+  border-radius: var(--border-radius-medium);
+  padding: var(--space-5);
+}
+
+
+.mission-card-highlight {
+  background-color: var(--color-gold-light);
+  border-left-color: var(--color-terracotta);
+}
+
+
+.card-number,
+.process-number {
+  color: var(--color-terracotta-dark);
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  margin-bottom: var(--space-3);
+}
+
+
+.process-grid {
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+
+.process-card {
+  border-top: 0.3rem solid var(--color-gold);
+  padding: var(--space-4) 0;
+}
+
+
+.process-card p {
+  max-width: 35ch;
+}
+
+
+.values-section {
+  align-items: start;
+  background-color: var(--color-sage-light);
+  border-radius: var(--border-radius-medium);
+  display: grid;
+  gap: var(--space-6);
+  grid-template-columns: 0.7fr 1.3fr;
+  margin-bottom: var(--space-7);
+  padding: var(--space-5);
+}
+
+
+.values-list li {
+  align-items: flex-start;
+  border-bottom: 1px solid rgba(64, 88, 70, 0.25);
+  display: grid;
+  gap: var(--space-3);
+  grid-template-columns: 10rem 1fr;
+  padding: var(--space-3) 0;
+}
+
+
+.values-list li:first-child {
+  padding-top: 0;
+}
+
+
+.values-list li:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+
+.values-list strong {
+  color: var(--color-sage-dark);
+}
+
+
+.values-list span {
+  color: var(--color-sage-dark);
+}
+
+
+/* =====================================================================
+   14. FORMS
+   ===================================================================== */
+
+.form-section {
+  align-items: start;
+  display: grid;
+  gap: var(--space-6);
+  grid-template-columns: minmax(0, 1.2fr) minmax(18rem, 0.8fr);
+  padding-bottom: var(--space-7);
+}
+
+
+.enquiry-form,
+.contact-form {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-medium);
+  box-shadow: var(--shadow-soft);
+  padding: var(--space-5);
+}
+
+
+fieldset {
+  border: 0;
+  margin-bottom: var(--space-4);
+}
+
+
+legend {
+  color: var(--color-brown-dark);
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: var(--space-3);
+}
+
+
+label {
+  color: var(--color-brown-dark);
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: var(--space-1);
+  margin-top: var(--space-3);
+}
+
+
+label:first-of-type {
+  margin-top: 0;
+}
+
+
+input,
+select,
+textarea {
+  background-color: var(--color-cream);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-small);
+  color: var(--color-ink);
+  padding: 0.8rem 0.9rem;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+  width: 100%;
+}
+
+
+textarea {
+  min-height: 9rem;
+  resize: vertical;
+}
+
+
+input:hover,
+select:hover,
+textarea:hover {
+  border-color: var(--color-gold-dark);
+}
+
+
+input:focus,
+select:focus,
+textarea:focus {
+  background-color: var(--color-white);
+  border-color: var(--color-focus);
+  box-shadow: 0 0 0 3px rgba(40, 108, 115, 0.15);
+  outline: none;
+}
+
+
+input:invalid:not(:placeholder-shown),
+select:invalid:not(:placeholder-shown) {
+  border-color: var(--color-terracotta);
+}
+
+
+.form-submit {
+  border: 0;
+}
+
+
+.form-aside {
+  background-color: var(--color-sage-light);
+  border-radius: var(--border-radius-medium);
+  padding: var(--space-5);
+}
+
+
+.form-aside h2 {
+  font-size: 2.1rem;
+}
+
+
+.aside-note {
+  border-top: 1px solid rgba(64, 88, 70, 0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: var(--space-3) 0;
+}
+
+
+.aside-note strong,
+.aside-note span {
+  color: var(--color-sage-dark);
+}
+
+
+.aside-note:last-child {
+  padding-bottom: 0;
+}
+
+
+/* =====================================================================
+   15. CONTACT PAGE
+   ===================================================================== */
+
+.contact-layout {
+  align-items: start;
+  display: grid;
+  gap: var(--space-6);
+  grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.8fr);
+  padding-bottom: var(--space-6);
+}
+
+
+.contact-details {
+  display: grid;
+  gap: var(--space-3);
+}
+
+
+.contact-detail {
+  align-items: flex-start;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-medium);
+  display: flex;
+  gap: var(--space-3);
+  padding: var(--space-4);
+}
+
+
+.contact-icon {
+  font-size: 1.5rem;
+}
+
+
+.contact-detail h2 {
+  font-size: 1.4rem;
+  margin-bottom: var(--space-1);
+}
+
+
+.location-note {
+  background-color: var(--color-cream-dark);
+  border-radius: var(--border-radius-medium);
+  margin-bottom: var(--space-7);
+  padding: var(--space-5);
+}
+
+
+.location-note p {
+  max-width: 55ch;
+}
+
+
+/* =====================================================================
+   16. FOOTER
+   ===================================================================== */
+
+.site-footer {
+  background-color: var(--color-brown-dark);
+  color: var(--color-cream);
+  padding: var(--space-6) max(5vw, var(--space-4)) var(--space-3);
+}
+
+
+.footer-content {
+  display: grid;
+  gap: var(--space-6);
+  grid-template-columns: 1.5fr 1fr 1fr;
+  margin: 0 auto;
+  max-width: var(--content-width);
+}
+
+
+.footer-logo {
+  color: var(--color-cream);
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: var(--space-2);
+}
+
+
+.footer-logo:hover,
+.footer-logo:focus {
+  color: var(--color-gold-light);
+}
+
+
+.site-footer p {
+  color: var(--color-cream-dark);
+}
+
+
+.footer-heading {
+  color: var(--color-gold-light);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  margin-bottom: var(--space-2);
+  text-transform: uppercase;
+}
+
+
+.footer-links li {
+  margin-bottom: 0.45rem;
+}
+
+
+.footer-links a {
+  color: var(--color-cream);
+  transition: color 0.2s ease;
+}
+
+
+.footer-links a:hover,
+.footer-links a:focus {
+  color: var(--color-gold-light);
+}
+
+
+.footer-bottom {
+  border-top: 1px solid rgba(248, 244, 236, 0.2);
+  margin: var(--space-6) auto 0;
+  max-width: var(--content-width);
+  padding-top: var(--space-3);
+}
+
+
+.footer-bottom p {
+  font-size: var(--font-size-small);
+  margin-bottom: 0;
+}
+
+
+/* =====================================================================
+   17. TABLET RESPONSIVE DESIGN
+   ===================================================================== */
+
+@media (max-width: 900px) {
+
+  .site-header {
+    align-items: flex-start;
+    flex-direction: column;
+    padding-block: var(--space-3);
+  }
+
+
+  .site-navigation ul {
+    gap: var(--space-3);
+  }
+
+
+  .hero-section {
+    grid-template-columns: 1fr;
+  }
+
+
+  .hero-image-wrapper {
+    max-width: 42rem;
+  }
+
+
+  .animal-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+
+  .animal-grid-home {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+
+  .split-section,
+  .story-section,
+  .form-section,
+  .contact-layout {
+    gap: var(--space-5);
+    grid-template-columns: 1fr;
+  }
+
+
+  .story-section-image {
+    max-width: 42rem;
+  }
+
+
+  .mission-section,
+  .process-grid {
+    grid-template-columns: 1fr;
+  }
+
+
+  .values-section {
+    grid-template-columns: 1fr;
+  }
+
+
+  .values-list li {
+    grid-template-columns: 12rem 1fr;
+  }
+
+
+  .footer-content {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+
+/* =====================================================================
+   18. MOBILE RESPONSIVE DESIGN
+   ===================================================================== */
+
+@media (max-width: 600px) {
+
+  :root {
+    --space-6: 3.5rem;
+    --space-7: 4.5rem;
+  }
+
+
+  .site-header {
+    align-items: center;
+    padding-inline: var(--space-3);
+  }
+
+
+  .site-navigation {
+    width: 100%;
+  }
+
+
+  .site-navigation ul {
+    align-items: center;
+    flex-direction: column;
+    gap: var(--space-1);
+    width: 100%;
+  }
+
+
+  .site-navigation a {
+    display: block;
+    padding: 0.35rem 0;
+  }
+
+
+  main {
+    padding-inline: var(--space-3);
+  }
+
+
+  .hero-section {
+    border-radius: 0 0 var(--border-radius-medium) var(--border-radius-medium);
+    margin-inline: calc(var(--space-3) * -1);
+    padding-inline: var(--space-3);
+  }
+
+
+  .hero-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+
+  .hero-actions .button {
+    width: 100%;
+  }
+
+
+  .hero-image {
+    min-height: 18rem;
+  }
+
+
+  .animal-grid,
+  .animal-grid-home {
+    grid-template-columns: 1fr;
+  }
+
+
+  .animal-image-wrapper,
+  .animal-image {
+    min-height: 14rem;
+  }
+
+
+  .split-section {
+    padding-block: var(--space-6);
+  }
+
+
+  .fact-panel {
+    padding: var(--space-4);
+  }
+
+
+  .values-section {
+    padding: var(--space-4);
+  }
+
+
+  .values-list li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+
+  .enquiry-form,
+  .contact-form,
+  .form-aside {
+    padding: var(--space-4);
+  }
+
+
+  .footer-content {
+    grid-template-columns: 1fr;
+  }
+
+
+  .site-footer {
+    padding-inline: var(--space-3);
+  }
+
+
+  .footer-bottom {
+    text-align: center;
+  }
+}
+
+
+/* =====================================================================
+   19. REDUCED MOTION ACCESSIBILITY
+   ===================================================================== */
+
+/*
+  Visitors who have enabled reduced motion at operating-system level
+  should not receive unnecessary movement or transitions.
+*/
+
+@media (prefers-reduced-motion: reduce) {
+
+  html {
+    scroll-behavior: auto;
+  }
+
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
 }
