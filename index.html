@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paws & Hearts | Home</title>
+  <!-- one shared stylesheet keeps colours, fonts and spacing consistent across
+       every page, and means a style change only has to be made in one place -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ***** header ***** -->
+  <!-- the header holds the logo and main navigation, and is repeated
+       identically on every page so visitors always know where they are
+       and can get to any other page in one click -->
+  <header>
+    <div class="logo">Paws & Hearts</div>
+
+    <nav>
+      <!-- these five links match the five pages required by the brief:
+           home, about, a services-equivalent page (adopt), enquiry, contact -->
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="adopt.html">Adopt</a></li>
+        <li><a href="enquiry.html">Enquiry</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ***** main content ***** -->
+  <main>
+
+    <!-- the hero is the first thing a visitor sees. it states who we are in
+         one line and points straight at the main action we want: adopting.
+         the <h1> is the single most important heading on the page for both
+         users and SEO, so there is only one per page -->
+    <section class="hero">
+      <img src="images/hero-dog.jpg" alt="A rescued dog resting in the sun at the Paws & Hearts shelter">
+      <h1>Every animal deserves a second chance</h1>
+      <p>Paws & Hearts is a Johannesburg-based animal rescue that finds loving
+         homes for abandoned and injured cats and dogs. Every animal in our
+         care is vaccinated, sterilised, and ready to become part of a family.</p>
+      <a href="adopt.html" class="cta-button">Adopt Today</a>
+    </section>
+
+    <!-- a short teaser of featured animals. the full list lives on adopt.html
+         so this section is deliberately kept small -->
+    <section class="featured-animals">
+      <h2>Featured Animals</h2>
+      <article class="animal-card">
+        <img src="images/animal-buddy.jpg" alt="Buddy, a two-year-old dog available for adoption">
+        <h3>Buddy</h3>
+        <p>Dog, 2 years old. Friendly, house-trained, great with kids.</p>
+      </article>
+      <article class="animal-card">
+        <img src="images/animal-whiskers.jpg" alt="Whiskers, a one-year-old cat available for adoption">
+        <h3>Whiskers</h3>
+        <p>Cat, 1 year old. Calm, affectionate, litter-trained.</p>
+      </article>
+    </section>
+
+    <!-- explains why adopting through us specifically is a good choice,
+         builds trust before asking someone to commit to a form -->
+    <section class="why-adopt">
+      <h2>Why Adopt With Us</h2>
+      <p>Every animal is vet-checked, vaccinated, and sterilised before
+         adoption. We also offer free post-adoption advice for the first
+         month, so you're never left figuring things out alone.</p>
+    </section>
+
+  </main>
+
+  <!-- ***** footer ***** -->
+  <!-- repeated on every page so contact info and a donate link are always
+       one click away, no matter which page a visitor lands on -->
+  <footer>
+    <p>&copy; 2026 Paws & Hearts Animal Rescue. All rights reserved.</p>
+    <ul>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="#">Facebook</a></li>
+      <li><a href="#">Donate</a></li>
+    </ul>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
