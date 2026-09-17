@@ -3,70 +3,231 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Paws & Hearts | About Us</title>
+
+  <!-- Shared stylesheet used by all five website pages -->
   <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
-  <header>
-    <div class="logo">Paws & Hearts</div>
-    <!-- nav kept identical to index.html so every page links to every
-         other page, which is what the brief means by a functional,
-         site-wide navigation menu -->
-    <nav>
+  <!-- =========================
+       SITE HEADER
+       ========================= -->
+  <header class="site-header">
+
+    <a class="logo" href="index.html" aria-label="Paws and Hearts home page">
+      <span class="logo-paw" aria-hidden="true">🐾</span>
+      <span>Paws &amp; Hearts</span>
+    </a>
+
+    <nav class="site-navigation" aria-label="Main navigation">
       <ul>
         <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About Us</a></li>
+        <li>
+          <a href="about.html" aria-current="page">About Us</a>
+        </li>
         <li><a href="adopt.html">Adopt</a></li>
         <li><a href="enquiry.html">Enquiry</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
+
   </header>
 
   <main>
-    <h1>About Paws & Hearts</h1>
 
-    <!-- the founding story builds credibility -- visitors are more likely to
-         donate or adopt from an organisation with a real, specific history
-         rather than a vague "we help animals" statement -->
-    <section class="history">
-      <h2>Our History</h2>
-      <p>Paws & Hearts started in 2021 as a small foster network run out of a
-         few volunteers' homes in Johannesburg. As more animals needed
-         help than our homes could hold, we opened a small shelter facility
-         that now cares for 30 to 40 animals at any given time.</p>
+    <!-- =========================
+         PAGE INTRODUCTION
+         ========================= -->
+    <section class="page-introduction">
+      <p class="eyebrow">Our story</p>
+      <h1>People helping animals find their way home.</h1>
+      <p>
+        Paws &amp; Hearts is a Johannesburg-based animal rescue built on
+        compassion, responsibility and the belief that every healthy,
+        treatable animal deserves a second chance.
+      </p>
     </section>
 
-    <!-- mission and vision are pulled directly from the approved proposal so
-         the site and the proposal stay consistent with each other -->
-    <section class="mission-vision">
-      <h2>Mission & Vision</h2>
-      <p><strong>Mission:</strong> To rescue, rehabilitate and rehome
-         abandoned and injured animals across Johannesburg.</p>
-      <p><strong>Vision:</strong> A community where no healthy, treatable
-         animal is turned away for lack of a home.</p>
+    <!-- =========================
+         HISTORY SECTION
+         ========================= -->
+    <section class="story-section history-section">
+
+      <div class="story-section-image">
+        <img
+          src="images/hero-dog.jpg"
+          alt="A rescued dog being cared for by Paws and Hearts"
+        >
+      </div>
+
+      <div class="story-section-content">
+        <p class="eyebrow">Where we started</p>
+        <h2>Our history</h2>
+
+        <p>
+          Paws &amp; Hearts started in 2021 as a small foster network run
+          from a few volunteers' homes in Johannesburg.
+        </p>
+
+        <p>
+          As more animals needed help than our homes could hold, we opened
+          a small shelter facility. Today, the organisation cares for
+          approximately 30 to 40 animals at any given time.
+        </p>
+      </div>
+
     </section>
 
-    <!-- explaining how the shelter runs day to day gives visitors (especially
-         potential volunteers) a concrete picture of what they'd be
-         supporting, not just an abstract mission statement -->
-    <section class="how-we-work">
-      <h2>How We Work</h2>
-      <p>Every animal that comes into our care is vet-checked, vaccinated,
-         and sterilised before being listed for adoption. Our small team of
-         staff and volunteers handles daily feeding, walks, and medical care
-         until each animal finds a permanent home.</p>
+    <!-- =========================
+         MISSION AND VISION
+         ========================= -->
+    <section class="mission-section">
+
+      <div class="mission-card">
+        <span class="card-number">01</span>
+        <h2>Our mission</h2>
+        <p>
+          To rescue, rehabilitate and rehome abandoned and injured animals
+          across Johannesburg.
+        </p>
+      </div>
+
+      <div class="mission-card mission-card-highlight">
+        <span class="card-number">02</span>
+        <h2>Our vision</h2>
+        <p>
+          A community where no healthy, treatable animal is turned away
+          for lack of a home.
+        </p>
+      </div>
+
     </section>
+
+    <!-- =========================
+         HOW WE WORK
+         ========================= -->
+    <section class="content-section how-we-work">
+
+      <div class="section-heading">
+        <p class="eyebrow">Care with purpose</p>
+        <h2>How we work</h2>
+        <p>
+          Our process is designed to protect the wellbeing of every animal
+          while preparing them for a successful future with their new family.
+        </p>
+      </div>
+
+      <div class="process-grid">
+
+        <article class="process-card">
+          <span class="process-number">1</span>
+          <h3>Rescue</h3>
+          <p>
+            Animals are brought into our care from unsafe, abandoned or
+            neglectful situations.
+          </p>
+        </article>
+
+        <article class="process-card">
+          <span class="process-number">2</span>
+          <h3>Rehabilitate</h3>
+          <p>
+            Each animal receives veterinary attention, vaccinations,
+            sterilisation and daily care.
+          </p>
+        </article>
+
+        <article class="process-card">
+          <span class="process-number">3</span>
+          <h3>Rehome</h3>
+          <p>
+            We match animals with suitable families and provide guidance
+            throughout the adoption process.
+          </p>
+        </article>
+
+      </div>
+
+    </section>
+
+    <!-- =========================
+         VALUES
+         ========================= -->
+    <section class="values-section">
+
+      <div>
+        <p class="eyebrow">What guides us</p>
+        <h2>Our values</h2>
+      </div>
+
+      <ul class="values-list">
+        <li>
+          <strong>Compassion</strong>
+          <span>Every animal is treated with patience and dignity.</span>
+        </li>
+
+        <li>
+          <strong>Responsibility</strong>
+          <span>We commit to honest, careful and ethical rescue work.</span>
+        </li>
+
+        <li>
+          <strong>Community</strong>
+          <span>Real change happens when people work together.</span>
+        </li>
+      </ul>
+
+    </section>
+
   </main>
 
-  <footer>
-    <p>&copy; 2026 Paws & Hearts Animal Rescue. All rights reserved.</p>
-    <ul>
-      <li><a href="contact.html">Contact</a></li>
-      <li><a href="#">Facebook</a></li>
-      <li><a href="#">Donate</a></li>
-    </ul>
+  <!-- =========================
+       FOOTER
+       ========================= -->
+  <footer class="site-footer">
+
+    <div class="footer-content">
+      <div>
+        <a class="footer-logo" href="index.html">
+          🐾 Paws &amp; Hearts
+        </a>
+
+        <p>
+          Giving Johannesburg's abandoned and injured animals
+          a second chance.
+        </p>
+      </div>
+
+      <div class="footer-links">
+        <h2 class="footer-heading">Explore</h2>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="adopt.html">Adopt</a></li>
+          <li><a href="enquiry.html">Enquiry</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h2 class="footer-heading">Get involved</h2>
+        <ul>
+          <li><a href="enquiry.html">Volunteer</a></li>
+          <li><a href="enquiry.html">Donate or sponsor</a></li>
+          <li><a href="contact.html">Visit us</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>
+        &copy; 2026 Paws &amp; Hearts Animal Rescue.
+        All rights reserved.
+      </p>
+    </div>
+
   </footer>
 
   <script src="js/main.js"></script>
