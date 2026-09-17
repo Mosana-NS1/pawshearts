@@ -3,86 +3,259 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Paws & Hearts | Home</title>
-  <!-- one shared stylesheet keeps colours, fonts and spacing consistent across
-       every page, and means a style change only has to be made in one place -->
+
+  <!--
+    One shared external stylesheet is linked to every page.
+    This ensures that the entire website has consistent typography,
+    colours, spacing, layout and responsive behaviour.
+  -->
   <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
-  <!-- ***** header ***** -->
-  <!-- the header holds the logo and main navigation, and is repeated
-       identically on every page so visitors always know where they are
-       and can get to any other page in one click -->
-  <header>
-    <div class="logo">Paws & Hearts</div>
+  <!-- =========================
+       SITE HEADER AND NAVIGATION
+       ========================= -->
+  <header class="site-header">
 
-    <nav>
-      <!-- these five links match the five pages required by the brief:
-           home, about, a services-equivalent page (adopt), enquiry, contact -->
+    <a class="logo" href="index.html" aria-label="Paws and Hearts home page">
+      <span class="logo-paw" aria-hidden="true">🐾</span>
+      <span>Paws &amp; Hearts</span>
+    </a>
+
+    <nav class="site-navigation" aria-label="Main navigation">
       <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="adopt.html">Adopt</a></li>
-        <li><a href="enquiry.html">Enquiry</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li>
+          <a href="index.html" aria-current="page">Home</a>
+        </li>
+        <li>
+          <a href="about.html">About Us</a>
+        </li>
+        <li>
+          <a href="adopt.html">Adopt</a>
+        </li>
+        <li>
+          <a href="enquiry.html">Enquiry</a>
+        </li>
+        <li>
+          <a href="contact.html">Contact</a>
+        </li>
       </ul>
     </nav>
+
   </header>
 
-  <!-- ***** main content ***** -->
   <main>
 
-    <!-- the hero is the first thing a visitor sees. it states who we are in
-         one line and points straight at the main action we want: adopting.
-         the <h1> is the single most important heading on the page for both
-         users and SEO, so there is only one per page -->
-    <section class="hero">
-      <img src="images/hero-dog.jpg" alt="A rescued dog resting in the sun at the Paws & Hearts shelter">
-      <h1>Every animal deserves a second chance</h1>
-      <p>Paws & Hearts is a Johannesburg-based animal rescue that finds loving
-         homes for abandoned and injured cats and dogs. Every animal in our
-         care is vaccinated, sterilised, and ready to become part of a family.</p>
-      <a href="adopt.html" class="cta-button">Adopt Today</a>
+    <!-- =========================
+         HERO SECTION
+         ========================= -->
+    <section class="hero-section">
+
+      <div class="hero-content">
+        <p class="eyebrow">Johannesburg animal rescue</p>
+
+        <h1>Every paw deserves a place to call home.</h1>
+
+        <p class="hero-introduction">
+          Paws &amp; Hearts rescues, rehabilitates and rehomes abandoned
+          and injured cats and dogs across Johannesburg.
+        </p>
+
+        <div class="hero-actions">
+          <a class="button button-primary" href="adopt.html">
+            Meet our animals
+          </a>
+
+          <a class="button button-secondary" href="about.html">
+            Learn about us
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-image-wrapper">
+        <img
+          src="images/hero-dog.jpg"
+          alt="A rescued dog resting in the sun at the Paws and Hearts shelter"
+          class="hero-image"
+        >
+      </div>
+
     </section>
 
-    <!-- a short teaser of featured animals. the full list lives on adopt.html
-         so this section is deliberately kept small -->
-    <section class="featured-animals">
-      <h2>Featured Animals</h2>
-      <article class="animal-card">
-        <img src="images/animal-buddy.jpg" alt="Buddy, a two-year-old dog available for adoption">
-        <h3>Buddy</h3>
-        <p>Dog, 2 years old. Friendly, house-trained, great with kids.</p>
-      </article>
-      <article class="animal-card">
-        <img src="images/animal-whiskers.jpg" alt="Whiskers, a one-year-old cat available for adoption">
-        <h3>Whiskers</h3>
-        <p>Cat, 1 year old. Calm, affectionate, litter-trained.</p>
-      </article>
+    <!-- =========================
+         FEATURED ANIMALS
+         ========================= -->
+    <section class="content-section featured-section">
+
+      <div class="section-heading">
+        <p class="eyebrow">Find your new best friend</p>
+        <h2>Featured animals</h2>
+        <p>
+          These friendly animals are ready for safe, loving and permanent homes.
+        </p>
+      </div>
+
+      <div class="animal-grid animal-grid-home">
+
+        <article class="animal-card">
+          <div class="animal-image-wrapper">
+            <img
+              src="images/animal-buddy.jpg"
+              alt="Buddy, a two-year-old rescue dog"
+              class="animal-image"
+            >
+            <span class="animal-status">Ready for adoption</span>
+          </div>
+
+          <div class="animal-card-content">
+            <p class="animal-type">Dog · 2 years old</p>
+            <h3>Buddy</h3>
+            <p>
+              Friendly, house-trained and great with children.
+            </p>
+            <a class="text-link" href="enquiry.html">
+              Enquire about Buddy <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="animal-card">
+          <div class="animal-image-wrapper">
+            <img
+              src="images/animal-whiskers.jpg"
+              alt="Whiskers, a one-year-old rescue cat"
+              class="animal-image"
+            >
+            <span class="animal-status">Ready for adoption</span>
+          </div>
+
+          <div class="animal-card-content">
+            <p class="animal-type">Cat · 1 year old</p>
+            <h3>Whiskers</h3>
+            <p>
+              Calm, affectionate and already litter-trained.
+            </p>
+            <a class="text-link" href="enquiry.html">
+              Enquire about Whiskers <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </article>
+
+      </div>
+
+      <a class="button button-outline section-button" href="adopt.html">
+        View all animals
+      </a>
+
     </section>
 
-    <!-- explains why adopting through us specifically is a good choice,
-         builds trust before asking someone to commit to a form -->
-    <section class="why-adopt">
-      <h2>Why Adopt With Us</h2>
-      <p>Every animal is vet-checked, vaccinated, and sterilised before
-         adoption. We also offer free post-adoption advice for the first
-         month, so you're never left figuring things out alone.</p>
+    <!-- =========================
+         WHY ADOPT WITH US
+         ========================= -->
+    <section class="split-section">
+
+      <div class="split-section-content">
+        <p class="eyebrow">Support that continues after adoption</p>
+        <h2>Adoption is the beginning of the story.</h2>
+
+        <p>
+          Every animal is vet-checked, vaccinated and sterilised before
+          adoption. Our team also provides post-adoption guidance during
+          the first month, helping families and animals settle in together.
+        </p>
+
+        <a class="text-link" href="about.html">
+          Discover how we work <span aria-hidden="true">→</span>
+        </a>
+      </div>
+
+      <div class="fact-panel">
+        <div class="fact-item">
+          <strong>2021</strong>
+          <span>Founded in Johannesburg</span>
+        </div>
+
+        <div class="fact-item">
+          <strong>30–40</strong>
+          <span>Animals cared for at any time</span>
+        </div>
+
+        <div class="fact-item">
+          <strong>100%</strong>
+          <span>Committed to second chances</span>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- =========================
+         CALL TO ACTION
+         ========================= -->
+    <section class="callout-section">
+      <p class="eyebrow">You can make a difference</p>
+      <h2>Ready to change a life?</h2>
+      <p>
+        Whether you want to adopt, volunteer or support our work,
+        there is a place for you in the Paws &amp; Hearts community.
+      </p>
+
+      <a class="button button-primary" href="enquiry.html">
+        Send an enquiry
+      </a>
     </section>
 
   </main>
 
-  <!-- ***** footer ***** -->
-  <!-- repeated on every page so contact info and a donate link are always
-       one click away, no matter which page a visitor lands on -->
-  <footer>
-    <p>&copy; 2026 Paws & Hearts Animal Rescue. All rights reserved.</p>
-    <ul>
-      <li><a href="contact.html">Contact</a></li>
-      <li><a href="#">Facebook</a></li>
-      <li><a href="#">Donate</a></li>
-    </ul>
+  <!-- =========================
+       SITE FOOTER
+       ========================= -->
+  <footer class="site-footer">
+
+    <div class="footer-content">
+      <div>
+        <a class="footer-logo" href="index.html">
+          🐾 Paws &amp; Hearts
+        </a>
+
+        <p>
+          Giving Johannesburg's abandoned and injured animals
+          a second chance.
+        </p>
+      </div>
+
+      <div class="footer-links">
+        <h2 class="footer-heading">Explore</h2>
+
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="adopt.html">Adopt</a></li>
+          <li><a href="enquiry.html">Enquiry</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h2 class="footer-heading">Get involved</h2>
+
+        <ul>
+          <li><a href="enquiry.html">Volunteer</a></li>
+          <li><a href="enquiry.html">Donate or sponsor</a></li>
+          <li><a href="contact.html">Visit us</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>
+        &copy; 2026 Paws &amp; Hearts Animal Rescue.
+        All rights reserved.
+      </p>
+    </div>
+
   </footer>
 
   <script src="js/main.js"></script>

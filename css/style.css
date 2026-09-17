@@ -1,0 +1,10 @@
+/* style.css
+   This is a placeholder stylesheet for Part 1.
+   -Linking it now, even though it is empty, means the <link> tag in every
+    HTML page already resolves correctly instead of pointing to a missing file.
+   -Full styling (colours, layout, typography from the proposal's Design
+    section) gets built here in Part 2. */
+
+* {
+  box-sizing: border-box;
+}
