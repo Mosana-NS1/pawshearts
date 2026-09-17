@@ -3,88 +3,258 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Paws & Hearts | Adopt</title>
+
+  <!-- Shared external stylesheet -->
   <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
-  <header>
-    <div class="logo">Paws & Hearts</div>
-    <nav>
+  <!-- =========================
+       SITE HEADER
+       ========================= -->
+  <header class="site-header">
+
+    <a class="logo" href="index.html" aria-label="Paws and Hearts home page">
+      <span class="logo-paw" aria-hidden="true">🐾</span>
+      <span>Paws &amp; Hearts</span>
+    </a>
+
+    <nav class="site-navigation" aria-label="Main navigation">
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About Us</a></li>
-        <li><a href="adopt.html">Adopt</a></li>
+        <li>
+          <a href="adopt.html" aria-current="page">Adopt</a>
+        </li>
         <li><a href="enquiry.html">Enquiry</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
+
   </header>
 
   <main>
-    <h1>Animals Available for Adoption</h1>
-    <p>Every animal below is vaccinated, sterilised, and ready for a home.
-       Click "Enquire" on an animal you're interested in and we'll get back
-       to you within 48 hours.</p>
 
-    <!-- this is the page's main function: a browsable grid of real animals,
-         which directly supports the proposal's goal of increasing adoption
-         enquiries. in part 3, this grid could be filtered by species/age
-         using javascript, but for part 1 it is static content -->
-    <section class="animal-grid">
+    <!-- =========================
+         PAGE INTRODUCTION
+         ========================= -->
+    <section class="page-introduction">
+      <p class="eyebrow">Find your match</p>
+      <h1>Animals looking for their forever homes.</h1>
+      <p>
+        Every animal below has been vaccinated, sterilised and assessed
+        by our team. Contact us to begin the adoption process.
+      </p>
+    </section>
 
-      <article class="animal-card">
-        <img src="images/animal-buddy.jpg" alt="Buddy, a two-year-old dog">
-        <h3>Buddy &mdash; Dog, 2 years</h3>
-        <p>Friendly, house-trained, great with kids.</p>
-        <a href="enquiry.html">Enquire about Buddy</a>
-      </article>
+    <!-- =========================
+         ANIMAL ADOPTION GRID
+         ========================= -->
+    <section class="content-section">
 
-      <article class="animal-card">
-        <img src="images/animal-whiskers.jpg" alt="Whiskers, a one-year-old cat">
-        <h3>Whiskers &mdash; Cat, 1 year</h3>
-        <p>Calm, affectionate, litter-trained.</p>
-        <a href="enquiry.html">Enquire about Whiskers</a>
-      </article>
+      <div class="animal-grid">
 
-      <article class="animal-card">
-        <img src="images/animal-max.jpg" alt="Max, a four-year-old dog">
-        <h3>Max &mdash; Dog, 4 years</h3>
-        <p>Calm senior dog, loves naps and short walks.</p>
-        <a href="enquiry.html">Enquire about Max</a>
-      </article>
+        <article class="animal-card">
+          <div class="animal-image-wrapper">
+            <img
+              src="images/animal-buddy.jpg"
+              alt="Buddy, a two-year-old dog"
+              class="animal-image"
+            >
+            <span class="animal-status">Available</span>
+          </div>
 
-      <article class="animal-card">
-        <img src="images/animal-luna.jpg" alt="Luna, a three-year-old cat">
-        <h3>Luna &mdash; Cat, 3 years</h3>
-        <p>Independent, good with other cats.</p>
-        <a href="enquiry.html">Enquire about Luna</a>
-      </article>
+          <div class="animal-card-content">
+            <p class="animal-type">Dog · 2 years old</p>
+            <h2>Buddy</h2>
+            <p>
+              Friendly, house-trained and great with children.
+            </p>
+            <a class="button button-small button-primary" href="enquiry.html">
+              Enquire about Buddy
+            </a>
+          </div>
+        </article>
 
-      <article class="animal-card">
-        <img src="images/animal-rex.jpg" alt="Rex, a six-month-old puppy">
-        <h3>Rex &mdash; Dog, 6 months</h3>
-        <p>Energetic puppy, needs a home with a yard.</p>
-        <a href="enquiry.html">Enquire about Rex</a>
-      </article>
+        <article class="animal-card">
+          <div class="animal-image-wrapper">
+            <img
+              src="images/animal-whiskers.jpg"
+              alt="Whiskers, a one-year-old cat"
+              class="animal-image"
+            >
+            <span class="animal-status">Available</span>
+          </div>
 
-      <article class="animal-card">
-        <img src="images/animal-milo.jpg" alt="Milo, a two-year-old cat">
-        <h3>Milo &mdash; Cat, 2 years</h3>
-        <p>Playful, good with children.</p>
-        <a href="enquiry.html">Enquire about Milo</a>
-      </article>
+          <div class="animal-card-content">
+            <p class="animal-type">Cat · 1 year old</p>
+            <h2>Whiskers</h2>
+            <p>
+              Calm, affectionate and litter-trained.
+            </p>
+            <a class="button button-small button-primary" href="enquiry.html">
+              Enquire about Whiskers
+            </a>
+          </div>
+        </article>
+
+        <article class="animal-card">
+          <div class="animal-image-wrapper">
+            <img
+              src="images/animal-max.jpg"
+              alt="Max, a four-year-old dog"
+              class="animal-image"
+            >
+            <span class="animal-status">Available</span>
+          </div>
+
+          <div class="animal-card-content">
+            <p class="animal-type">Dog · 4 years old</p>
+            <h2>Max</h2>
+            <p>
+              A calm senior dog who loves naps and short walks.
+            </p>
+            <a class="button button-small button-primary" href="enquiry.html">
+              Enquire about Max
+            </a>
+          </div>
+        </article>
+
+        <article class="animal-card">
+          <div class="animal-image-wrapper">
+            <img
+              src="images/animal-luna.jpg"
+              alt="Luna, a three-year-old cat"
+              class="animal-image"
+            >
+            <span class="animal-status">Available</span>
+          </div>
+
+          <div class="animal-card-content">
+            <p class="animal-type">Cat · 3 years old</p>
+            <h2>Luna</h2>
+            <p>
+              Independent, gentle and comfortable around other cats.
+            </p>
+            <a class="button button-small button-primary" href="enquiry.html">
+              Enquire about Luna
+            </a>
+          </div>
+        </article>
+
+        <article class="animal-card">
+          <div class="animal-image-wrapper">
+            <img
+              src="images/animal-rex.jpg"
+              alt="Rex, a six-month-old puppy"
+              class="animal-image"
+            >
+            <span class="animal-status">Available</span>
+          </div>
+
+          <div class="animal-card-content">
+            <p class="animal-type">Dog · 6 months old</p>
+            <h2>Rex</h2>
+            <p>
+              An energetic puppy who needs a home with a secure yard.
+            </p>
+            <a class="button button-small button-primary" href="enquiry.html">
+              Enquire about Rex
+            </a>
+          </div>
+        </article>
+
+        <article class="animal-card">
+          <div class="animal-image-wrapper">
+            <img
+              src="images/animal-milo.jpg"
+              alt="Milo, a two-year-old cat"
+              class="animal-image"
+            >
+            <span class="animal-status">Available</span>
+          </div>
+
+          <div class="animal-card-content">
+            <p class="animal-type">Cat · 2 years old</p>
+            <h2>Milo</h2>
+            <p>
+              Playful, affectionate and good with children.
+            </p>
+            <a class="button button-small button-primary" href="enquiry.html">
+              Enquire about Milo
+            </a>
+          </div>
+        </article>
+
+      </div>
 
     </section>
+
+    <!-- =========================
+         ADOPTION PROCESS
+         ========================= -->
+    <section class="callout-section adoption-callout">
+      <p class="eyebrow">What happens next?</p>
+      <h2>Start with a simple enquiry.</h2>
+      <p>
+        Tell us which animal you are interested in and our team will
+        contact you within 48 hours to discuss the next steps.
+      </p>
+
+      <a class="button button-primary" href="enquiry.html">
+        Begin an enquiry
+      </a>
+    </section>
+
   </main>
 
-  <footer>
-    <p>&copy; 2026 Paws & Hearts Animal Rescue. All rights reserved.</p>
-    <ul>
-      <li><a href="contact.html">Contact</a></li>
-      <li><a href="#">Facebook</a></li>
-      <li><a href="#">Donate</a></li>
-    </ul>
+  <!-- =========================
+       FOOTER
+       ========================= -->
+  <footer class="site-footer">
+
+    <div class="footer-content">
+      <div>
+        <a class="footer-logo" href="index.html">
+          🐾 Paws &amp; Hearts
+        </a>
+
+        <p>
+          Giving Johannesburg's abandoned and injured animals
+          a second chance.
+        </p>
+      </div>
+
+      <div class="footer-links">
+        <h2 class="footer-heading">Explore</h2>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="enquiry.html">Enquiry</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h2 class="footer-heading">Get involved</h2>
+        <ul>
+          <li><a href="enquiry.html">Volunteer</a></li>
+          <li><a href="enquiry.html">Donate or sponsor</a></li>
+          <li><a href="contact.html">Visit us</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>
+        &copy; 2026 Paws &amp; Hearts Animal Rescue.
+        All rights reserved.
+      </p>
+    </div>
+
   </footer>
 
   <script src="js/main.js"></script>
