@@ -6,19 +6,11 @@
 
   <title>Paws & Hearts | Home</title>
 
-  <!--
-    One shared external stylesheet is linked to every page.
-    This ensures that the entire website has consistent typography,
-    colours, spacing, layout and responsive behaviour.
-  -->
   <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-  <!-- =========================
-       SITE HEADER AND NAVIGATION
-       ========================= -->
   <header class="site-header">
 
     <a class="logo" href="index.html" aria-label="Paws and Hearts home page">
@@ -50,9 +42,6 @@
 
   <main>
 
-    <!-- =========================
-         HERO SECTION
-         ========================= -->
     <section class="hero-section">
 
       <div class="hero-content">
@@ -79,6 +68,8 @@
       <div class="hero-image-wrapper">
         <img
           src="images/hero-dog.png"
+          srcset="images/hero-dog.png 480w, images/hero-dog.png 960w, images/hero-dog.png 1440w"
+          sizes="(max-width: 900px) 100vw, 45vw"
           alt="A rescued dog resting in the sun at the Paws and Hearts shelter"
           class="hero-image"
         >
@@ -86,9 +77,6 @@
 
     </section>
 
-    <!-- =========================
-         FEATURED ANIMALS
-         ========================= -->
     <section class="content-section featured-section">
 
       <div class="section-heading">
@@ -105,6 +93,8 @@
           <div class="animal-image-wrapper">
             <img
               src="images/animal-buddy.png"
+              srcset="images/animal-buddy.png 400w, images/animal-buddy.png 800w"
+              sizes="(max-width: 600px) 100vw, 50vw"
               alt="Buddy, a two-year-old rescue dog"
               class="animal-image"
             >
@@ -127,6 +117,8 @@
           <div class="animal-image-wrapper">
             <img
               src="images/animal-whiskers.png"
+              srcset="images/animal-whiskers.png 400w, images/animal-whiskers.png 800w"
+              sizes="(max-width: 600px) 100vw, 50vw"
               alt="Whiskers, a one-year-old rescue cat"
               class="animal-image"
             >
@@ -153,9 +145,6 @@
 
     </section>
 
-    <!-- =========================
-         WHY ADOPT WITH US
-         ========================= -->
     <section class="split-section">
 
       <div class="split-section-content">
@@ -192,9 +181,6 @@
 
     </section>
 
-    <!-- =========================
-         CALL TO ACTION
-         ========================= -->
     <section class="callout-section">
       <p class="eyebrow">You can make a difference</p>
       <h2>Ready to change a life?</h2>
@@ -210,9 +196,6 @@
 
   </main>
 
-  <!-- =========================
-       SITE FOOTER
-       ========================= -->
   <footer class="site-footer">
 
     <div class="footer-content">
