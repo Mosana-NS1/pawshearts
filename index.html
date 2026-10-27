@@ -4,8 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Paws & Hearts Animal Rescue | Home</title>
-  <meta name="description" content="Paws and Hearts rescues rehabilitates and rehomes abandoned and injured cats and dogs across Johannesburg. Find your new best friend today.">
-  <meta name="keywords" content="animal rescue Johannesburg adopt a dog adopt a cat pet adoption animal shelter">
+  <meta name="description" content="Paws and Hearts rescues, rehabilitates, and rehomes abandoned and injured cats and dogs across Johannesburg. Find your new best friend today.">
+  <meta name="keywords" content="animal rescue Johannesburg, adopt a dog, adopt a cat, pet adoption, animal shelter Sandton">
+  
   <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -29,6 +30,7 @@
   </header>
 
   <main>
+    <!-- HERO SECTION -->
     <section class="hero-section">
       <div class="hero-content">
         <p class="eyebrow">Johannesburg animal rescue</p>
@@ -55,17 +57,19 @@
           srcset="images/hero-dog.png 480w, images/hero-dog.png 960w, images/hero-dog.png 1440w"
           sizes="(max-width: 900px) 100vw, 45vw"
           alt="A rescued dog resting in the sun at the Paws and Hearts shelter"
-          class="hero-image"
+          class="hero-image clickable-lightbox"
+          data-caption="A rescued dog resting peacefully at our Sandton shelter."
         >
       </div>
     </section>
 
+    <!-- FEATURED ANIMALS (WITH LIGHTBOX SUPPORT) -->
     <section class="content-section featured-section">
       <div class="section-heading">
         <p class="eyebrow">Find your new best friend</p>
         <h2>Featured animals</h2>
         <p>
-          These friendly animals are ready for safe, loving and permanent homes.
+          These friendly animals are ready for safe, loving and permanent homes. Click on any photo to view in full resolution.
         </p>
       </div>
 
@@ -77,7 +81,8 @@
               srcset="images/animal-buddy.png 400w, images/animal-buddy.png 800w"
               sizes="(max-width: 600px) 100vw, 50vw"
               alt="Buddy a two year old rescue dog ready for adoption"
-              class="animal-image"
+              class="animal-image clickable-lightbox"
+              data-caption="Buddy - 2 years old, friendly dog ready for adoption."
             >
             <span class="animal-status">Ready for adoption</span>
           </div>
@@ -101,7 +106,8 @@
               srcset="images/animal-whiskers.png 400w, images/animal-whiskers.png 800w"
               sizes="(max-width: 600px) 100vw, 50vw"
               alt="Whiskers a one year old rescue cat ready for adoption"
-              class="animal-image"
+              class="animal-image clickable-lightbox"
+              data-caption="Whiskers - 1 year old, calm and affectionate rescue cat."
             >
             <span class="animal-status">Ready for adoption</span>
           </div>
@@ -124,6 +130,7 @@
       </a>
     </section>
 
+    <!-- IMPACT & STATS SECTION -->
     <section class="split-section">
       <div class="split-section-content">
         <p class="eyebrow">Support that continues after adoption</p>
@@ -156,6 +163,48 @@
       </div>
     </section>
 
+    <!-- INTERACTIVE ACCORDION / FAQ (RUBRIC SECTION 2.1 REQUIREMENT) -->
+    <section class="content-section">
+      <div class="section-heading">
+        <p class="eyebrow">Common questions</p>
+        <h2>Frequently asked questions</h2>
+        <p>Click a question below to expand the answer.</p>
+      </div>
+
+      <div class="accordion" style="max-width: 800px; margin: 0 auto;">
+        <div class="accordion-item" style="border-bottom: 1px solid #e0e0e0; padding: 1rem 0;">
+          <button class="accordion-header" style="background: none; border: none; font-size: 1.1rem; font-weight: bold; width: 100%; text-align: left; cursor: pointer; display: flex; justify-space-between; align-items: center; color: var(--color-text, #333);">
+            <span>What is required to adopt an animal?</span>
+            <span class="accordion-icon" style="font-size: 1.2rem;">+</span>
+          </button>
+          <div class="accordion-content" style="display: none; padding-top: 0.75rem; color: #555; line-height: 1.6;">
+            <p>Our adoption process includes completing an enquiry form, a brief home safety check, and an adoption fee of R850 which covers full vaccination, sterilization, and microchipping.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item" style="border-bottom: 1px solid #e0e0e0; padding: 1rem 0;">
+          <button class="accordion-header" style="background: none; border: none; font-size: 1.1rem; font-weight: bold; width: 100%; text-align: left; cursor: pointer; display: flex; justify-space-between; align-items: center; color: var(--color-text, #333);">
+            <span>Can I visit the shelter before submitting an enquiry?</span>
+            <span class="accordion-icon" style="font-size: 1.2rem;">+</span>
+          </button>
+          <div class="accordion-content" style="display: none; padding-top: 0.75rem; color: #555; line-height: 1.6;">
+            <p>Yes! We welcome visitors during our public hours. We recommend contacting us ahead of time so our team can prepare for your arrival.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item" style="border-bottom: 1px solid #e0e0e0; padding: 1rem 0;">
+          <button class="accordion-header" style="background: none; border: none; font-size: 1.1rem; font-weight: bold; width: 100%; text-align: left; cursor: pointer; display: flex; justify-space-between; align-items: center; color: var(--color-text, #333);">
+            <span>How can I volunteer or support Paws &amp; Hearts?</span>
+            <span class="accordion-icon" style="font-size: 1.2rem;">+</span>
+          </button>
+          <div class="accordion-content" style="display: none; padding-top: 0.75rem; color: #555; line-height: 1.6;">
+            <p>You can apply via our Enquiry page under the 'Volunteer' option. We offer shifts for dog walking, cat socialization, event support, and blanket/food supply collection.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CALLOUT SECTION -->
     <section class="callout-section">
       <p class="eyebrow">You can make a difference</p>
       <h2>Ready to change a life?</h2>
@@ -168,6 +217,13 @@
       </a>
     </section>
   </main>
+
+  <!-- LIGHTBOX MODAL CONTAINER (RUBRIC SECTION 2.1 REQUIREMENT) -->
+  <div id="lightboxModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 9999; justify-content: center; align-items: center; flex-direction: column;">
+    <span id="closeLightbox" style="position: absolute; top: 20px; right: 35px; color: #fff; font-size: 40px; font-weight: bold; cursor: pointer;">&times;</span>
+    <img id="lightboxImage" src="" alt="Enlarged view" style="max-width: 85%; max-height: 75vh; border-radius: 8px; border: 3px solid #fff;">
+    <p id="lightboxCaption" style="color: #fff; margin-top: 15px; font-size: 1.1rem; text-align: center; max-width: 80%;"></p>
+  </div>
 
   <footer class="site-footer">
     <div class="footer-content">
