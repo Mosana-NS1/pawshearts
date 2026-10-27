@@ -3,11 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Adopt a Pet | Paws & Hearts Animal Rescue</title>
+  <title>Adopt a Pet | Paws & Hearts Animal Rescue Johannesburg</title>
   <meta name="description" content="Browse our available dogs and cats for adoption in Johannesburg. Find your perfect companion at Paws & Hearts Animal Rescue.">
-  <meta name="keywords" content="adopt a dog adopt a cat rescue pets Johannesburg pet adoption">
+  <meta name="keywords" content="adopt a dog adopt a cat rescue pets Johannesburg pet adoption animal shelter">
   <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
   <header class="site-header">
@@ -20,7 +21,9 @@
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About Us</a></li>
-        <li><a href="adopt.html" aria-current="page">Adopt</a></li>
+        <li>
+          <a href="adopt.html" aria-current="page">Adopt</a>
+        </li>
         <li><a href="enquiry.html">Enquiry</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
@@ -28,12 +31,17 @@
   </header>
 
   <main>
+
+    <section class="page-introduction">
+      <p class="eyebrow">Find your match</p>
+      <h1>Animals looking for their forever homes.</h1>
+      <p>
+        Every animal below has been vaccinated, sterilised and assessed
+        by our team. Contact us to begin the adoption process.
+      </p>
+    </section>
+
     <section class="content-section">
-      <div class="section-heading">
-        <p class="eyebrow">Meet our available animals</p>
-        <h2>Adopt your new best friend</h2>
-        <p>Filter our rescue animals by category to find the right companion for your home.</p>
-      </div>
 
       <div class="filter-container" style="margin-bottom: 2rem; text-align: center;">
         <label for="petTypeFilter" style="margin-right: 0.5rem; font-weight: bold;">Filter by Category:</label>
@@ -45,60 +53,189 @@
       </div>
 
       <div class="animal-grid">
+
         <article class="animal-card" data-category="dog">
           <div class="animal-image-wrapper">
-            <img src="images/animal-buddy.png" alt="Buddy a two year old rescue dog" class="animal-image">
-            <span class="animal-status">Ready for adoption</span>
+            <img
+              src="images/animal-achuzi.png"
+              srcset="images/animal-achuzi.png 400w, images/animal-achuzi.png 800w"
+              sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33vw"
+              alt="Achuzi, a two-year-old dog"
+              class="animal-image"
+            >
+            <span class="animal-status">Available</span>
           </div>
+
           <div class="animal-card-content">
             <p class="animal-type">Dog · 2 years old</p>
-            <h3>Buddy</h3>
-            <p>Friendly, house-trained and great with children.</p>
-            <a class="text-link" href="enquiry.html">Enquire about Buddy <span aria-hidden="true">→</span></a>
+            <h2>Buddy</h2>
+            <p>
+              Friendly, house-trained and great with children.
+            </p>
+            <a class="button button-small button-primary" href="enquiry.html">
+              Enquire about Buddy
+            </a>
           </div>
         </article>
 
         <article class="animal-card" data-category="cat">
           <div class="animal-image-wrapper">
-            <img src="images/animal-whiskers.png" alt="Whiskers a one year old rescue cat" class="animal-image">
-            <span class="animal-status">Ready for adoption</span>
+            <img
+              src="images/animal-katse.png"
+              srcset="images/animal-katse.png 400w, images/animal-katse.png 800w"
+              sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33vw"
+              alt="Whiskers, a one-year-old cat"
+              class="animal-image"
+            >
+            <span class="animal-status">Available</span>
           </div>
+
           <div class="animal-card-content">
             <p class="animal-type">Cat · 1 year old</p>
-            <h3>Whiskers</h3>
-            <p>Calm, affectionate and already litter-trained.</p>
-            <a class="text-link" href="enquiry.html">Enquire about Whiskers <span aria-hidden="true">→</span></a>
+            <h2>Whiskers</h2>
+            <p>
+              Calm, affectionate and litter-trained.
+            </p>
+            <a class="button button-small button-primary" href="enquiry.html">
+              Enquire about Whiskers
+            </a>
           </div>
         </article>
 
         <article class="animal-card" data-category="dog">
           <div class="animal-image-wrapper">
-            <img src="images/hero-dog.png" alt="Max a three year old rescue dog" class="animal-image">
-            <span class="animal-status">Ready for adoption</span>
+            <img
+              src="images/animal-max.png"
+              srcset="images/animal-max.png 400w, images/animal-max.png 800w"
+              sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33vw"
+              alt="Max, a four-year-old dog"
+              class="animal-image"
+            >
+            <span class="animal-status">Available</span>
           </div>
+
           <div class="animal-card-content">
-            <p class="animal-type">Dog · 3 years old</p>
-            <h3>Max</h3>
-            <p>Energetic and playful companion looking for an active family.</p>
-            <a class="text-link" href="enquiry.html">Enquire about Max <span aria-hidden="true">→</span></a>
+            <p class="animal-type">Dog · 4 years old</p>
+            <h2>Max</h2>
+            <p>
+              A calm senior dog who loves naps and short walks.
+            </p>
+            <a class="button button-small button-primary" href="enquiry.html">
+              Enquire about Max
+            </a>
           </div>
         </article>
+
+        <article class="animal-card" data-category="cat">
+          <div class="animal-image-wrapper">
+            <img
+              src="images/animal-luna.png"
+              srcset="images/animal-luna.png 400w, images/animal-luna.png 800w"
+              sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33vw"
+              alt="Luna, a three-year-old cat"
+              class="animal-image"
+            >
+            <span class="animal-status">Available</span>
+          </div>
+
+          <div class="animal-card-content">
+            <p class="animal-type">Cat · 3 years old</p>
+            <h2>Luna</h2>
+            <p>
+              Independent, gentle and comfortable around other cats.
+            </p>
+            <a class="button button-small button-primary" href="enquiry.html">
+              Enquire about Luna
+            </a>
+          </div>
+        </article>
+
+        <article class="animal-card" data-category="dog">
+          <div class="animal-image-wrapper">
+            <img
+              src="images/animal-rex.png"
+              srcset="images/animal-rex.png 400w, images/animal-rex.png 800w"
+              sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33vw"
+              alt="Rex, a six-month-old puppy"
+              class="animal-image"
+            >
+            <span class="animal-status">Available</span>
+          </div>
+
+          <div class="animal-card-content">
+            <p class="animal-type">Dog · 6 months old</p>
+            <h2>Rex</h2>
+            <p>
+              An energetic puppy who needs a home with a secure yard.
+            </p>
+            <a class="button button-small button-primary" href="enquiry.html">
+              Enquire about Rex
+            </a>
+          </div>
+        </article>
+
+        <article class="animal-card" data-category="cat">
+          <div class="animal-image-wrapper">
+            <img
+              src="images/animal-milo.png"
+              srcset="images/animal-milo.png 400w, images/animal-milo.png 800w"
+              sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33vw"
+              alt="Milo, a two-year-old cat"
+              class="animal-image"
+            >
+            <span class="animal-status">Available</span>
+          </div>
+
+          <div class="animal-card-content">
+            <p class="animal-type">Cat · 2 years old</p>
+            <h2>Milo</h2>
+            <p>
+              Playful, affectionate and good with children.
+            </p>
+            <a class="button button-small button-primary" href="enquiry.html">
+              Enquire about Milo
+            </a>
+          </div>
+        </article>
+
       </div>
+
     </section>
+
+    <section class="callout-section adoption-callout">
+      <p class="eyebrow">What happens next?</p>
+      <h2>Start with a simple enquiry.</h2>
+      <p>
+        Tell us which animal you are interested in and our team will
+        contact you within 48 hours to discuss the next steps.
+      </p>
+
+      <a class="button button-primary" href="enquiry.html">
+        Begin an enquiry
+      </a>
+    </section>
+
   </main>
 
   <footer class="site-footer">
+
     <div class="footer-content">
       <div>
-        <a class="footer-logo" href="index.html">🐾 Paws &amp; Hearts</a>
-        <p>Giving Johannesburg's abandoned and injured animals a second chance.</p>
+        <a class="footer-logo" href="index.html">
+          🐾 Paws &amp; Hearts
+        </a>
+
+        <p>
+          Giving Johannesburg's abandoned and injured animals
+          a second chance.
+        </p>
       </div>
 
       <div class="footer-links">
         <h2 class="footer-heading">Explore</h2>
         <ul>
+          <li><a href="index.html">Home</a></li>
           <li><a href="about.html">About Us</a></li>
-          <li><a href="adopt.html">Adopt</a></li>
           <li><a href="enquiry.html">Enquiry</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
@@ -115,8 +252,12 @@
     </div>
 
     <div class="footer-bottom">
-      <p>&copy; 2026 Paws &amp; Hearts Animal Rescue. All rights reserved.</p>
+      <p>
+        &copy; 2026 Paws &amp; Hearts Animal Rescue.
+        All rights reserved.
+      </p>
     </div>
+
   </footer>
 
   <script src="js/main.js"></script>

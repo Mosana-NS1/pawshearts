@@ -4,7 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Paws & Hearts | Contact</title>
+  <title>Contact Us | Paws & Hearts Animal Rescue</title>
+  <meta name="description" content="Get in touch with Paws & Hearts Animal Rescue in Johannesburg. Send us a message, view our shelter locations, or check operating hours.">
+  <meta name="keywords" content="contact animal shelter Johannesburg, Sandton animal rescue address, Randburg drop off point, visit shelter Johannesburg">
+
+  <!-- Leaflet CSS for Map -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 
   <!-- Shared external stylesheet -->
   <link rel="stylesheet" href="css/style.css">
@@ -55,12 +60,12 @@
          ========================= -->
     <section class="contact-layout">
 
-      <form class="contact-form" action="contact.html" method="post">
+      <form class="contact-form" id="contactForm" action="contact.html" method="post">
 
         <fieldset>
           <legend>Send us a message</legend>
 
-          <label for="name">Name</label>
+          <label for="name">Full Name</label>
           <input
             type="text"
             id="name"
@@ -69,7 +74,7 @@
             required
           >
 
-          <label for="email">Email address</label>
+          <label for="email">Email Address</label>
           <input
             type="email"
             id="email"
@@ -77,6 +82,23 @@
             autocomplete="email"
             required
           >
+
+          <label for="phone">Phone Number</label>
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            placeholder="e.g. 082 123 4567"
+          >
+
+          <label for="subject">Message Subject</label>
+          <select id="subject" name="subject" required>
+            <option value="">Select a topic...</option>
+            <option value="General Query">General Query</option>
+            <option value="Visiting Shelter">Visiting the Shelter</option>
+            <option value="Donations">Donation &amp; Sponsorship</option>
+            <option value="Feedback">Feedback</option>
+          </select>
 
           <label for="contact-message">Message</label>
           <textarea
@@ -133,6 +155,26 @@
 
       </div>
 
+    </section>
+
+    <!-- =========================
+         MAP SECTION
+         ========================= -->
+    <section class="content-section">
+      <div class="section-heading">
+        <p class="eyebrow">Our facilities</p>
+        <h2>Shelter &amp; drop-off locations</h2>
+        <p>Locate our Sandton main shelter and Randburg drop-off point on the map below.</p>
+      </div>
+
+      <div style="margin-bottom: 1rem; text-align: right;">
+        <button id="findLocationBtn" type="button" class="button button-outline button-small">
+          📍 Find route from my location
+        </button>
+      </div>
+
+      <div id="map" style="height: 420px; width: 100%; border-radius: 8px; border: 1px solid var(--color-border, #e0e0e0); z-index: 1;"></div>
+      <p id="locationStatus" style="font-size: 0.9rem; margin-top: 0.5rem; color: #555; text-align: right;"></p>
     </section>
 
     <!-- =========================
@@ -199,6 +241,80 @@
 
   </footer>
 
+  <!-- Leaflet JS for Map -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <!-- Main Script -->
   <script src="js/main.js"></script>
+
+  <!-- Map Initialization & Live Geolocation Script -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const mapContainer = document.getElementById("map");
+      if (!mapContainer) return;
+
+      // Coordinates for both locations in Johannesburg
+      const sandtonCoords = [-26.1076, 28.0567]; // 22 Rivonia Rd, Sandton
+      const randburgCoords = [-26.0933, 27.9995]; // 5 Bram Fischer Dr, Randburg
+
+      // Initialize map centered between Sandton and Randburg
+      const map = L.map("map").setView([-26.1000, 28.0280], 12);
+
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution: "&copy; OpenStreetMap contributors"
+      }).addTo(map);
+
+      // Marker 1: Main Shelter (Sandton)
+      const mainMarker = L.marker(sandtonCoords).addTo(map)
+        .bindPopup("<strong>Main Shelter</strong><br>22 Rivonia Road, Sandton, Johannesburg");
+
+      // Marker 2: Drop-off Point (Randburg)
+      const dropMarker = L.marker(randburgCoords).addTo(map)
+        .bindPopup("<strong>Drop-off Point</strong><br>5 Bram Fischer Drive, Randburg, Johannesburg");
+
+      // Live Location feature
+      const findBtn = document.getElementById("findLocationBtn");
+      const statusText = document.getElementById("locationStatus");
+
+      if (findBtn) {
+        findBtn.addEventListener("click", function() {
+          if (!navigator.geolocation) {
+            statusText.textContent = "Geolocation is not supported by your browser.";
+            return;
+          }
+
+          statusText.textContent = "Locating your position...";
+
+          navigator.geolocation.getCurrentPosition(
+            function(position) {
+              const userLat = position.coords.latitude;
+              const userLng = position.coords.longitude;
+              const userCoords = [userLat, userLng];
+
+              // Add marker for user's live location
+              const userMarker = L.marker(userCoords).addTo(map)
+                .bindPopup("<strong>Your Location</strong>").openPopup();
+
+              // Draw a line connect from user location to Main Shelter
+              const routeLine = L.polyline([userCoords, sandtonCoords], {
+                color: '#2a6f97',
+                weight: 4,
+                opacity: 0.7,
+                dashArray: '8, 8'
+              }).addTo(map);
+
+              // Fit map bounds to view user location and shelter together
+              const bounds = L.latLngBounds([userCoords, sandtonCoords, randburgCoords]);
+              map.fitBounds(bounds, { padding: [50, 50] });
+
+              statusText.textContent = "Location found! Route displayed to Main Shelter.";
+            },
+            function(error) {
+              statusText.textContent = "Unable to retrieve your location. Please check browser permissions.";
+            }
+          );
+        });
+      }
+    });
+  </script>
 </body>
 </html>
