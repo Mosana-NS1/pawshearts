@@ -4,7 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Paws & Hearts | Enquiry</title>
+  <title>Submit an Enquiry | Paws & Hearts Animal Rescue</title>
+  <meta name="description" content="Enquire about adopting a pet, volunteering, or donating to Paws & Hearts Animal Rescue in Johannesburg. Get instant information on adoption fees and availability.">
+  <meta name="keywords" content="adopt pet enquiry Johannesburg, volunteer animal shelter Sandton, donate animal rescue South Africa">
 
   <!-- Shared external stylesheet -->
   <link rel="stylesheet" href="css/style.css">
@@ -51,11 +53,11 @@
     </section>
 
     <!-- =========================
-         ENQUIRY FORM
+         ENQUIRY FORM & ASIDE
          ========================= -->
     <section class="form-section">
 
-      <form class="enquiry-form" action="enquiry.html" method="post">
+      <form class="enquiry-form" id="enquiryForm" action="enquiry.html" method="post" novalidate>
 
         <fieldset>
           <legend>Your enquiry</legend>
@@ -84,6 +86,7 @@
             name="message"
             rows="6"
             placeholder="Tell us a little more about your enquiry"
+            required
           ></textarea>
         </fieldset>
 
@@ -105,6 +108,7 @@
             id="contact-number"
             name="contact-number"
             autocomplete="tel"
+            placeholder="e.g. 082 123 4567"
             required
           >
 
@@ -122,6 +126,9 @@
           Submit enquiry
         </button>
 
+        <!-- Dynamic Output Container for Processed Response -->
+        <div id="enquiryResponse" class="form-response-box" style="display: none; margin-top: 1.5rem; padding: 1.25rem; border-radius: 6px; background-color: #f0f7f4; border: 1px solid #2a6f97;"></div>
+
       </form>
 
       <aside class="form-aside">
@@ -136,21 +143,21 @@
         <div class="aside-note">
           <strong>Adoption enquiries</strong>
           <span>
-            Please mention the animal's name in your message.
+            Please mention the animal's name in your message. Standard adoption fee is R850 (includes vaccination, microchipping &amp; sterilization).
           </span>
         </div>
 
         <div class="aside-note">
           <strong>Volunteer enquiries</strong>
           <span>
-            Tell us what type of support you would enjoy providing.
+            Tell us what type of support you would enjoy providing. Shifts are available on weekends and weekdays.
           </span>
         </div>
 
         <div class="aside-note">
           <strong>Donation enquiries</strong>
           <span>
-            We can discuss once-off donations, sponsorships and supplies.
+            We can discuss once-off donations, monthly sponsorships, and food/blanket supply drops.
           </span>
         </div>
       </aside>
