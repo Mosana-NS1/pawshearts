@@ -33,17 +33,28 @@ function initActiveNavLink() {
    -------------------------------------------------------------------------- */
 function initAutoFillEnquiry() {
   const urlParams = new URLSearchParams(window.location.search);
-  const animal = urlParams.get("animal");
-  const type = urlParams.get("type");
+  const animal = urlParams.get("animal")?.trim();
+  const type = urlParams.get("type")?.trim();
+  const typeSelect = document.getElementById("enquiry-type");
+  const nameInput = document.getElementById("animal-name");
 
-  if (type) {
-    const typeSelect = document.getElementById("enquiry-type");
-    if (typeSelect) typeSelect.value = type;
+  if (typeSelect) {
+    if (type) {
+      typeSelect.value = type;
+    } else if (animal) {
+      typeSelect.value = "adopt";
+    }
+
+    if (animal) {
+      typeSelect.disabled = true;
+      typeSelect.setAttribute("aria-readonly", "true");
+    }
   }
 
-  if (animal) {
-    const nameInput = document.getElementById("animal-name");
-    if (nameInput) nameInput.value = animal;
+  if (animal && nameInput) {
+    nameInput.value = animal;
+    nameInput.readOnly = true;
+    nameInput.setAttribute("aria-readonly", "true");
   }
 }
 
@@ -60,6 +71,40 @@ function validateSouthAfricanPhone(phone) {
 function validateEmail(email) {
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   return emailRegex.test(email);
+}
+
+function escapeHtml(value) {
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+function buildEmailLinks(recipient, subject, body) {
+  const mailtoSubject = encodeURIComponent(subject);
+  const mailtoBody = encodeURIComponent(body);
+  const gmailParams = new URLSearchParams({ view: "cm", fs: "1", to: recipient, su: subject, body });
+  const outlookParams = new URLSearchParams({ to: recipient, subject, body });
+
+  return {
+    mailto: `mailto:${recipient}?subject=${mailtoSubject}&body=${mailtoBody}`,
+    gmail: `https://mail.google.com/mail/?${gmailParams.toString()}`,
+    outlook: `https://outlook.office.com/mail/deeplink/compose?${outlookParams.toString()}`
+  };
+}
+
+function composeEmailButtons(recipient, subject, body) {
+  const links = buildEmailLinks(recipient, subject, body);
+  return `
+    <p style="margin-top: 1rem; margin-bottom: 0.65rem;"><strong>Choose an email service to open your prepared message:</strong></p>
+    <div class="email-compose-links">
+      <a class="button button-primary" href="${links.gmail}" target="_blank" rel="noopener noreferrer">Open Gmail</a>
+      <a class="button button-primary" href="${links.outlook}" target="_blank" rel="noopener noreferrer">Open Outlook.com</a>
+      <a class="button button-primary" href="${links.mailto}">Open desktop mail app</a>
+    </div>
+  `;
 }
 
 function showError(fieldId, message) {
@@ -149,17 +194,45 @@ function initEnquiryForm() {
 
     let responseHeading = "";
     let detailText = "";
+    let emailButtons = "";
 
     if (enquiryType === "adopt") {
-      const targetAnimal = animalName ? `for <strong>${animalName}</strong>` : "for one of our shelter animals";
-      responseHeading = "Adoption Enquiry Processed";
-      detailText = `Thank you, <strong>${fullName}</strong>! Your adoption enquiry ${targetAnimal} has been received. Standard adoption fee is <strong>R850</strong> (covers full vaccination, microchipping & sterilization). Our team will contact you at <strong>${email}</strong> within 48 hours to schedule a shelter visit.`;
+      const safeName = escapeHtml(fullName);
+      const safeEmail = escapeHtml(email);
+      const targetAnimal = animalName
+        ? `for <strong>${escapeHtml(animalName)}</strong>`
+        : "for one of our shelter animals";
+      responseHeading = "Adoption Enquiry Prepared";
+      detailText = `Thank you, <strong>${safeName}</strong>! Your adoption enquiry ${targetAnimal} is ready to send. Standard adoption fee is <strong>R850</strong> (covers full vaccination, microchipping & sterilization). Our team will contact you at <strong>${safeEmail}</strong> within 48 hours after receiving your email.`;
+
+      const recipient = "info@pawsandhearts.co.za";
+      const subject = `Adoption Enquiry: ${animalName || "General"} - ${fullName}`;
+      const body =
+        `Paws & Hearts Adoption Enquiry Quote\n` +
+        `-----------------------------------------\n` +
+        `Applicant: ${fullName}\n` +
+        `Email: ${email}\n` +
+        `Phone: ${contactNumber}\n` +
+        `Animal: ${animalName || "Not specified"}\n\n` +
+        `Details & Requirements:\n` +
+        `- Adoption Fee: R850 (Vaccination, Microchipping & Sterilization)\n` +
+        `- Location: Main Shelter, 22 Rivonia Road, Sandton\n` +
+        `- Pickup Time: Mon-Fri 08:00-17:00 / Sat 09:00-13:00\n` +
+        `- Next Steps: Our team will reach out within 48 hours to confirm your visit date.\n\n` +
+        `User Message:\n${message}`;
+      emailButtons = composeEmailButtons(recipient, subject, body);
     } else if (enquiryType === "volunteer") {
-      responseHeading = "Volunteer Application Received";
-      detailText = `Thank you for offering your time, <strong>${fullName}</strong>! We have sent our volunteer orientation schedule and availability roster to <strong>${email}</strong>.`;
+      responseHeading = "Volunteer Application Prepared";
+      detailText = `Thank you for offering your time, <strong>${escapeHtml(fullName)}</strong>! Choose an email service below to send your application to our team.`;
+      const subject = `Volunteer Application - ${fullName}`;
+      const body = `Volunteer Application\nName: ${fullName}\nEmail: ${email}\nPhone: ${contactNumber}\n\nMessage:\n${message}`;
+      emailButtons = composeEmailButtons("info@pawsandhearts.co.za", subject, body);
     } else if (enquiryType === "donate") {
-      responseHeading = "Sponsorship & Donation Information";
-      detailText = `Thank you for supporting Paws & Hearts, <strong>${fullName}</strong>! Our banking details and supply drop-off instructions for our Johannesburg facilities have been dispatched to <strong>${email}</strong>.`;
+      responseHeading = "Donation or Sponsorship Enquiry Prepared";
+      detailText = `Thank you for supporting Paws & Hearts, <strong>${escapeHtml(fullName)}</strong>! Choose an email service below to send your enquiry to our team.`;
+      const subject = `Donation/Sponsorship Enquiry - ${fullName}`;
+      const body = `Donation/Sponsorship Enquiry\nName: ${fullName}\nEmail: ${email}\nPhone: ${contactNumber}\n\nMessage:\n${message}`;
+      emailButtons = composeEmailButtons("info@pawsandhearts.co.za", subject, body);
     }
 
     if (responseBox) {
@@ -167,11 +240,26 @@ function initEnquiryForm() {
       responseBox.innerHTML = `
         <h3 style="margin-top:0; color: #2a6f97;">🐾 ${responseHeading}</h3>
         <p style="margin-bottom:0; line-height: 1.6; color: #333;">${detailText}</p>
+        ${emailButtons}
       `;
       responseBox.scrollIntoView({ behavior: "smooth", block: "nearest" });
     }
 
     form.reset();
+
+    const prefilledAnimal = new URLSearchParams(window.location.search).get("animal")?.trim();
+    if (prefilledAnimal) {
+      const typeSelect = document.getElementById("enquiry-type");
+      const nameInput = document.getElementById("animal-name");
+      if (typeSelect) {
+        typeSelect.value = "adopt";
+        typeSelect.disabled = true;
+      }
+      if (nameInput) {
+        nameInput.value = prefilledAnimal;
+        nameInput.readOnly = true;
+      }
+    }
   });
 }
 
@@ -180,6 +268,7 @@ function initEnquiryForm() {
    -------------------------------------------------------------------------- */
 function initContactForm() {
   const form = document.getElementById("contactForm");
+  const responseBox = document.getElementById("contactResponse");
   if (!form) return;
 
   form.addEventListener("submit", (e) => {
@@ -224,20 +313,26 @@ function initContactForm() {
 
     if (!isValid) return;
 
-    // Compiles data into mailto link directed to info@pawsandhearts.co.za
     const recipient = "info@pawsandhearts.co.za";
-    const mailtoSubject = encodeURIComponent(`[${subject}] Message from ${name}`);
-    const mailtoBody = encodeURIComponent(
+    const emailSubject = `[${subject}] Message from ${name}`;
+    const emailBody =
       `Paws & Hearts Contact Form Submission\n` +
       `---------------------------------------\n` +
       `Name: ${name}\n` +
       `Email: ${email}\n` +
       `Phone: ${phone || "Not provided"}\n` +
       `Subject: ${subject}\n\n` +
-      `Message:\n${message}`
-    );
+      `Message:\n${message}`;
 
-    window.location.href = `mailto:${recipient}?subject=${mailtoSubject}&body=${mailtoBody}`;
+    if (responseBox) {
+      responseBox.style.display = "block";
+      responseBox.innerHTML = `
+        <h3 style="margin-top:0; color: #2a6f97;">Message prepared</h3>
+        <p>Your message has not been sent yet. Choose an email service below to review and send it.</p>
+        ${composeEmailButtons(recipient, emailSubject, emailBody)}
+      `;
+      responseBox.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
 
     form.reset();
   });
